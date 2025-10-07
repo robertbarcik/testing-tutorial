@@ -3,7 +3,10 @@
     "allow": [
       "WebSearch",
       "WebFetch(domain:google.github.io)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(jupyter nbconvert:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

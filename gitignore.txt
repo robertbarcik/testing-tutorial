@@ -16,6 +16,7 @@ ENV/
 env.bak/
 venv.bak/
 .venv/
+api_keys.txt
 
 # IDE
 .vscode/
@@ -32,6 +33,7 @@ venv.bak/
 .env
 .env.local
 .env.*.local
+api_keys.txt
 
 # Distribution / packaging
 build/
