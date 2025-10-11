@@ -8,3 +8,5 @@ python-dotenv
 nest-asyncio
 deprecated
 google-genai
+pandas
+matplotlib
