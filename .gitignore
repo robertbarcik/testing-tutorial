@@ -28,6 +28,7 @@ api_keys.txt
 
 # Claude Code
 .claude/
+NOTEBOOK_GUIDELINES.md
 
 # Environment variables
 .env
