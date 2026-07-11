@@ -6,6 +6,7 @@
 test_it_support.py
 test_parameterized.py
 exercise_2.py
+test_failing_demo.py
 
 # Python
 __pycache__/
@@ -78,3 +79,4 @@ htmlcov/
 *.db
 *.sqlite
 *.sqlite3
+report.html
