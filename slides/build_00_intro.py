@@ -220,8 +220,7 @@ notes(s, "0_1 Vitajte v kurze. Who it is for: developers and QA people shipping 
 
 # 2 — The testing ladder (course map)
 s = new_slide()
-title(s, "The testing ladder", "How this course climbs from a chat window to a security red-team",
-      kicker="Lecture 0.1 · Welcome")
+title(s, "The testing ladder", kicker="Lecture 0.1 · Welcome")   # Robert 2026-08-16: no subtitle/panel/footer, cards higher
 steps = [
     ("1", "By hand", "Chapter 1. Probes in a chat UI, no code.", ACCENT),
     ("01", "pytest", "Assertions, parametrize, Pydantic.", DARK),
@@ -231,21 +230,17 @@ steps = [
     ("05", "Security", "Prompt leaks, injection.", FAIL),
     ("06", "Advanced", "Indirect injection, guardrail bypass.", FAIL),
 ]
-cw, gap, x0, y0 = 1.2, 0.09, 0.5, 1.75
+cw, gap, x0, y0 = 1.2, 0.09, 0.5, 1.2
 for i, (n, h, body, col) in enumerate(steps):
     x = x0 + i * (cw + gap)
     card(s, x, y0, cw, 1.55, col)
     pill(s, x + 0.1, y0 + 0.17, n, col)
     text(s, x + 0.1, y0 + 0.58, cw - 0.15, 0.35, h, size=12.5, bold=True, font=TITLE_FONT)
     text(s, x + 0.1, y0 + 0.9, cw - 0.15, 0.65, body, size=9, color=MUTED)
-text(s, 0.5, 3.45, 1.2, 0.3, "chapter 1", size=9.5, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
-text(s, 1.79, 3.45, 2.49, 0.3, "chapter 2 · nb 01–02", size=9.5, color=MUTED, align=PP_ALIGN.CENTER)
-text(s, 4.37, 3.45, 2.49, 0.3, "chapter 3 · nb 03–04", size=9.5, color=MUTED, align=PP_ALIGN.CENTER)
-text(s, 6.95, 3.45, 2.58, 0.3, "chapter 4 · nb 05–06", size=9.5, color=FAIL, bold=True, align=PP_ALIGN.CENTER)
-rect(s, 0.8, 4.05, 5.7, 0.55, TINT)
-text(s, 0.95, 4.08, 5.5, 0.5, "Every rung reuses the previous one: today's pass/fail criteria become tomorrow's asserts.",
-     size=11.5, anchor=MSO_ANCHOR.MIDDLE)
-footer(s, "Chapter 4 is the crowd favourite — it only makes sense once chapters 1–3 are habits.")
+text(s, 0.5, 2.9, 1.2, 0.3, "chapter 1", size=9.5, color=ACCENT, bold=True, align=PP_ALIGN.CENTER)
+text(s, 1.79, 2.9, 2.49, 0.3, "chapter 2 · nb 01–02", size=9.5, color=MUTED, align=PP_ALIGN.CENTER)
+text(s, 4.37, 2.9, 2.49, 0.3, "chapter 3 · nb 03–04", size=9.5, color=MUTED, align=PP_ALIGN.CENTER)
+text(s, 6.95, 2.9, 2.58, 0.3, "chapter 4 · nb 05–06", size=9.5, color=FAIL, bold=True, align=PP_ALIGN.CENTER)
 notes(s, "0_1. Course map = the sheet's chapters: ch1 theory (this deck), ch2 notebooks 01+02 "
          "(deterministic tests, agents), ch3 notebooks 03+04 (LLM judge, pipeline), ch4 notebooks "
          "05+06 (security). Each rung automates the one below.")
