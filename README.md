@@ -7,7 +7,8 @@ pipelines and security testing. Each notebook builds on the previous one.
 
 | Notebook | What it covers |
 |----------|-----------------|
-| `00_Basic_Testing.md` | Manual testing without tools: probing an LLM by hand in a chat interface for hallucinations, consistency, and edge cases |
+| `slides/00_intro_testing_by_hand.pptx` | Module 0 slides (16): why LLM testing is different, the testing ladder, the anatomy of a manual test, and the eleven manual probes — the filmed version of the document below |
+| `00_Basic_Testing.md` | Manual testing without tools, long-form reading with worked GPT-5 outputs: probing an LLM by hand in a chat interface for hallucinations, consistency, and edge cases |
 | `01_llm_testing_manual_to_automated.ipynb` | Turning manual checks into automated pytest tests: assertions, parameterized tests, Pydantic validation of structured outputs |
 | `02_testing_adk_agents.ipynb` | Testing agents (not just single LLM calls) built with Google's ADK: verifying tool selection, tool parameters, and multi-step reasoning |
 | `03_llm_as_judge_evaluation.ipynb` | LLM-as-judge for subjective qualities (helpfulness, tone, ethics) that plain assertions cannot check, using a banking agent as the example |
@@ -35,8 +36,9 @@ interactive `getpass()` prompt.
 
 ## Cost
 
-All notebooks use small, cheap models (`gpt-5-nano` for 01-04, small open-source models via
-OpenRouter for 05-06). Running the entire tutorial end to end costs well under two dollars.
+All notebooks use small, cheap models (`gpt-5.6-luna` for 01-04, small open-source models via
+OpenRouter for 05-06). Running the entire tutorial end to end costs well under two dollars. (`gpt-5.6-luna` replaced
+`gpt-5-nano` in August 2026 — it is OpenAI's cheapest current model and `gpt-5-nano` retires on 2026-12-11.)
 
 ## Companion course
 
