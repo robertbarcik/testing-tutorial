@@ -1,88 +1,69 @@
-# Module 0 — Testing LLMs by hand: speaker notes
+# Chapters 0–1 (slides) — speaker notes
 
 Deck: `slides/00_intro_testing_by_hand.pptx` (per-slide JPGs in `slides-jpg/00_intro/`).
 Long-form reading with worked GPT-5 outputs: `00_Basic_Testing.md`.
-Lecture split (Skillmea sheet ch. 1): 1_1 = slides 1–5 · 1_2 = 6–10 · 1_3 = 11–14 · 1_4 = 15–16 · 1_5 = 17–20.
+Lecture split (Skillmea sheet): 0_1 = slides 1–2 · 0_2 = 3 · 1_1 = 4–6 · 1_2 = 7–10 · 1_3 = 11–13 · 1_4 = 14 · 1_5 = 15–16.
 
-## 1. Testing LLMs by hand
+## 1. Testing GenAI Applications
 
-Welcome to the testing course. This module is the on-ramp: before we write a single line of pytest, we learn what a good LLM test even looks like — by doing it manually in a chat window. Everything from module 1 onwards automates the habits from this module.
+0_1 Vitajte v kurze. Who it is for: developers and QA people shipping LLM features who want more than 'it looked fine in the chat'. Promise: by the end you have a reusable evaluation pipeline and you have attacked and hardened an LLM app yourself.
 
-## 2. Why testing an LLM is a different sport
+## 2. The testing ladder
 
-Classic software: deterministic, so one assertion is proof. LLMs: fluent hallucinations, randomness (temperature), and prompt brittleness. So a test becomes a probe of behaviour, run with intent and repeated. Keep this framing — it explains why the whole ladder exists.
+0_1. Course map = the sheet's chapters: ch1 theory (this deck), ch2 notebooks 01+02 (deterministic tests, agents), ch3 notebooks 03+04 (LLM judge, pipeline), ch4 notebooks 05+06 (security). Each rung automates the one below.
 
-## 3. The testing ladder
+## 3. Materials and environment
 
-Course map. Module 0 manual, 1 pytest, 2 ADK agents, 3 LLM-as-judge, 4 evaluation pipeline, 5 security basics, 6 advanced security. Point out the ladder logic: each rung automates the one below.
+0_2 Materiály a prostredie. Screen-share the repo README while talking: notebooks, badges, keys, cost. Mention 00_Basic_Testing.md as the long-form reading for chapter 1.
 
-## 4. Anatomy of a manual test
+## 4. Why testing an LLM is a different sport
 
-The single most important habit: write the pass criterion before reading the answer. LLM answers are persuasive; you will rationalise. Show that a test function is literally prompt + expected + assert + a report.
+1_1 opener. Classic software is deterministic, so one assertion is proof. LLMs: fluent hallucinations, randomness (temperature), prompt brittleness. So a test becomes a probe of behaviour, run with intent and repeated. This framing explains why the whole ladder exists.
 
-## 5. Eleven probes, three families
+## 5. Anatomy of a manual test
 
-Overview of the catalogue. Family 1: does it know things and admit gaps. Family 2: robustness of a prompt in production. Family 3: equity. Eleven techniques total; each gets one or two slides.
+1_1. The single most important habit: write the pass criterion before reading the answer. LLM answers are persuasive; you will rationalise. A test function is literally prompt + expected + assert + a report.
 
-## 6. Factual accuracy and hallucinations
+## 6. Eleven probes, three families
 
-Opener for lecture 1.2: Factual accuracy
-and hallucinations. Covers: Simple factual Q&A — settled facts, exact answers; Reference verification — make it cite, then check; The “I don't know” check and internal consistency.
+1_1 close. Overview of the catalogue and the map of the next three lectures: 1.2 factual accuracy (4 probes), 1.3 consistency (5), 1.4 bias (2). Full worked examples with real GPT-5 outputs are in 00_Basic_Testing.md.
 
 ## 7. 1.1  Simple factual Q&A
 
-Simplest probe: settled facts. Look for precision (exact date) and the tricky-fact traps. 'Descriptive but incorrect' — e.g. listing caffeine's elements instead of the formula — is a polite way of not knowing.
+1_2 opener. Simplest probe: settled facts. Look for precision (exact date) and the tricky-fact traps. 'Descriptive but incorrect' — listing caffeine's elements instead of the formula — is a polite way of not knowing.
 
 ## 8. 1.2  Reference verification
 
-Citations are where hallucination gets dangerous — they look like evidence. Two failure modes; both need a human to open the source. Second example in the reading: Apple's closing price on a given date with a source URL.
+1_2. Citations are where hallucination gets dangerous — they look like evidence. Two failure modes; both need a human to open the source. Second example in the reading: Apple's closing price on a given date with a source URL.
 
 ## 9. 1.3  The "I don't know" check
 
-Three flavours: secrets, staleness, the future. The safe answer states uncertainty and redirects. Frame the login-issue example as a support-bot scenario: old training data becomes misinformation the moment a fix ships.
+1_2. Three flavours: secrets, staleness, the future. The safe answer states uncertainty and redirects. The login-issue example returns in notebook 01 as the first negative assertion ('what the model must NOT say').
 
 ## 10. 1.4  Internal consistency
 
-Two internal-consistency probes: date vs age, parts vs total. Nice because the tester needs no outside source — the answer refutes itself. This kind of invariant is trivial to assert in code later.
+1_2 close. Two internal-consistency probes: date vs age, parts vs total. The tester needs no outside source — the answer refutes itself. Notebook 01 turns the EU example into a Pydantic invariant test.
 
-## 11. Consistency and prompt sensitivity
+## 11. 2.1  Exact repetition  ·  2.2  Paraphrase
 
-Opener for lecture 1.3: Consistency and
-prompt sensitivity. Covers: Exact repetition and paraphrase; Irrelevant noise and typos; Instruction order and recency bias.
+1_3 opener. Two sides of one coin: fix the wording and vary the run (temperature), or fix the intent and vary the wording. Define the must-mention checklist first. Paraphrase testing shows whether the model understood intent or matched keywords.
 
-## 12. 2.1  Exact repetition  ·  2.2  Paraphrase
+## 12. 2.3  Irrelevant noise  ·  2.4  Typos
 
-Two sides of one coin: fix the wording and vary the run (temperature), or fix the intent and vary the wording. Define the must-mention checklist first. Paraphrase testing shows whether the model understood intent or matched keywords.
+1_3. Robustness to the way humans actually type. Compare noisy outputs to the clean baseline; the core content must be identical. In the reading all three firewall variants pass on GPT-5 — worth saying that older/smaller models often don't.
 
-## 13. 2.3  Irrelevant noise  ·  2.4  Typos
+## 13. 2.5  Instruction order
 
-Robustness to the way humans actually type. Compare noisy outputs to the clean baseline; the core content must be identical. In the reading all three firewall variants pass on GPT-5 — worth saying that older/smaller models often don't.
+1_3 close. For complex prompts. Baseline in logical order, then shuffle. Grade per instruction — this becomes a small rubric, and in notebook 03 exactly the kind of thing an LLM judge scores.
 
-## 14. 2.5  Instruction order
+## 14. 3.1  Comparative testing  ·  3.2  Stereotype probing
 
-For complex prompts. Baseline in logical order, then shuffle. Grade per instruction — this becomes a small rubric, and later in module 3 exactly the kind of thing an LLM judge scores.
+1_4 (single slide, ~4 min). Comparative testing: identical prompts differing only in name/nationality; judge quality parity, not just explicit stereotypes. Stereotype probing: sentence completions that invite a cliché. Tip: separate chat sessions so answers are independent.
 
-## 15. Bias and fairness
+## 15. Write it down — the test log
 
-Opener for lecture 1.4: Bias and fairness. Covers: Comparative testing — change only the marker; Stereotype probing — offer it a cliché; Why pairs must run in separate chats.
+1_5 opener. Make the log explicit. Each column maps 1:1 to a piece of an automated test. Red rows are the value — they tell you which prompt to fix. Re-running the same log after a model update is regression testing, done by hand.
 
-## 16. 3.1  Comparative testing  ·  3.2  Stereotype probing
+## 16. Where manual testing stops
 
-Comparative testing: identical prompts differing only in name/nationality/etc.; judge quality parity, not just explicit stereotypes. Stereotype probing: sentence completions that invite a cliché. Practical tip: separate chat sessions so answers are independent.
-
-## 17. The test log — and where manual testing stops
-
-Opener for lecture 1.5: The test log — and where
-manual testing stops. Covers: The five-column log that becomes code; Four limits of testing by hand; Try it yourself before module 1.
-
-## 18. Write it down — the test log
-
-Make the log explicit. Each column maps 1:1 to a piece of an automated test. Red rows are the value — they tell you which prompt to fix. Re-running the same log after a model update is regression testing, done by hand.
-
-## 19. Where manual testing stops
-
-Bridge to module 1. Four limits, each mapped to the module that addresses it. Emphasise that manual testing is not replaced — it's the exploration phase; automation is the regression phase.
-
-## 20. Try it before module 1
-
-Homework-style close. Keep it to ten minutes. Point to the markdown reading for the full worked examples with real GPT-5 outputs.
+1_5 close. Four limits, each mapped to the notebook that addresses it. Manual testing is not replaced — it is the exploration phase; automation is the regression phase. Homework: ten minutes, any chat, five log rows; the red rows are the first tests we automate in notebook 01.

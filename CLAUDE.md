@@ -9,7 +9,7 @@ drive folder `7. Testing GenAI (SYNCED)/course_materials (shared)` via `drive-pu
 
 | Path | What |
 |---|---|
-| `slides/00_intro_testing_by_hand.pptx` | Module 0 deck (20 slides incl. 4 lecture dividers, speaker notes inside). Built by `slides/build_00_intro.py` — edit the script, not the pptx. |
+| `slides/00_intro_testing_by_hand.pptx` | Chapters 0–1 deck (16 slides; each slide's kicker = sheet lecture code 0_1…1_5; speaker notes inside). Built by `slides/build_00_intro.py` — edit the script, not the pptx. |
 | `slides/00_intro_speaker_notes.md` | Notes exported from the deck for reading while filming (`python3 slides/export_notes.py`). |
 | `slides-jpg/00_intro/` | Per-slide 1920px JPGs (Robert's voiceover workflow). Regenerate: `pdftoppm -r 192 -jpeg -jpegopt quality=90 slides/00_intro_testing_by_hand.pdf slides-jpg/00_intro/slide` |
 | `00_Basic_Testing.md` | Long-form Module 0 reading with worked ChatGPT outputs. Keep — the deck summarises it, does not replace it. |
