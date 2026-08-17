@@ -7,7 +7,7 @@ pipelines and security testing. Each notebook builds on the previous one.
 
 | Notebook | What it covers |
 |----------|-----------------|
-| `slides/00_intro_testing_by_hand.pptx` | Chapters 0–1 slides (16): course welcome and materials, why LLM testing is different, the anatomy of a manual test, and the eleven manual probes — the filmed version of the document below |
+| `slides/00_intro_testing_by_hand.pptx` | Chapters 0–1 slides (14): course welcome and materials, why LLM testing is different, and the eleven manual probes — the filmed version of the document below |
 | `00_Basic_Testing.md` | Manual testing without tools, long-form reading with worked GPT-5 outputs: probing an LLM by hand in a chat interface for hallucinations, consistency, and edge cases |
 | `01_llm_testing_manual_to_automated.ipynb` | Turning manual checks into automated pytest tests: assertions, parameterized tests, Pydantic validation of structured outputs |
 | `02_testing_adk_agents.ipynb` | Testing agents (not just single LLM calls) built with Google's ADK: verifying tool selection, tool parameters, and multi-step reasoning |
