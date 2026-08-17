@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Build slides/00_intro_testing_by_hand.pptx — chapters 0 and 1 of the Testing GenAI course.
+"""HISTORICAL GENERATOR (2026-08-16). The pptx is canonical since 2026-08-17 — Robert edits it directly
+(deleted the "anatomy" + "where manual testing stops" slides and several footers). Do NOT rebuild from
+this script; regenerate PDF/JPGs/notes from slides/00_intro_testing_by_hand.pptx instead.
+
+Build slides/00_intro_testing_by_hand.pptx — chapters 0 and 1 of the Testing GenAI course.
 
 One lean deck for the seven slide-based lectures of the Skillmea plan:
   0_1 Vitajte v kurze ............ slides 1-2
