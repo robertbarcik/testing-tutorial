@@ -10,7 +10,7 @@ drive folder `7. Testing GenAI (SYNCED)/course_materials (shared)` via `drive-pu
 | Path | What |
 |---|---|
 | `slides/00_intro_testing_by_hand.pptx` | Chapters 0–1 deck — **14 slides, the pptx itself is canonical** (Robert edits it directly on Drive/PowerPoint: slide 2 on 2026-08-16, deleted the 'anatomy' and 'where manual testing stops' slides + several footers on 2026-08-17). Each slide's kicker = sheet lecture code (0_1 = 1–2 · 0_2 = 3 · 1_1 = 4–5 · 1_2 = 6–9 · 1_3 = 10–12 · 1_4 = 13 · 1_5 = 14). `slides/build_00_intro.py` is the ORIGINAL generator, kept for the design primitives — it is behind the pptx; do NOT run it to rebuild. Before touching the deck: `drive-push --status`, pull any drive-newer copy, then regenerate PDF/JPGs/notes from the pptx. |
-| `slides/00_intro_speaker_notes.md` | Notes exported from the deck for reading while filming (`python3 slides/export_notes.py`). |
+| `training-ops/filming/testing/00_intro_speaker_notes.md` | Speaker notes for filming (moved out of this public repo 2026-08-25; regenerate via `export_notes.py` there). |
 | `slides-jpg/00_intro/` | Per-slide 1920px JPGs (Robert's voiceover workflow). Regenerate: `pdftoppm -r 192 -jpeg -jpegopt quality=90 slides/00_intro_testing_by_hand.pdf slides-jpg/00_intro/slide` |
 | `00_Basic_Testing.md` | Long-form Module 0 reading with worked ChatGPT outputs. Keep — the deck summarises it, does not replace it. |
 | `01`–`06` notebooks | Executed WITH outputs + Colab badges (hub CLAUDE.md tutorial-notebook convention). |
